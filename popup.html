@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Добавлятор буфферов</title>
+  <style>
+   body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background: #f9f9f9;
+}
+
+#container {
+  margin-top: 20px;
+  border: 2px dashed #ccc;
+  min-height: 100px;
+  padding: 10px;
+  border-radius: 6px;
+  background: white;
+
+  max-width: 600px;
+  max-height: 400px;
+  overflow: auto;
+}
+
+button {
+  padding: 10px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.note {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.note button {
+  order: unset;
+  margin-right: 0;
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  z-index: 10;
+}
+
+.note img {
+  max-width: 100%;
+  max-height: 350px;
+  object-fit: contain;
+  border-radius: 6px;
+  display: block;
+}
+
+  </style>
+</head>
+<body>
+
+  <button id="add-buffer">Добавить буффер</button>
+  
+  <div id="container"></div>
+
+  <script type='midule' src="popup.js"></script>
+
+</body>
+</html>

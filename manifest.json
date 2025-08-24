@@ -3,17 +3,18 @@
   "name": "Buffer Plus",
   "version": "1.0",
   "description": "Simple temporary buffer for copy-paste use",
+
   "icons": {
-    "16": "icons/icon16.ico",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "64": "icons/icon64.png"
   },
+
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "icons/icon16.ico",
-      "48": "icons/icon48.png",
-      "128": "icons/icon128.png"
+      "64": "icons/icon64.png"
     }
-  }
+  },
+
+  "permissions": [],
+  "host_permissions": []
 }

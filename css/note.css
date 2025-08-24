@@ -1,0 +1,9 @@
+.note {
+  display: flex;
+  align-items: center;
+}
+
+.note button {
+  order: -1;
+  margin-right: 10px;
+}
