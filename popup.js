@@ -1,4 +1,7 @@
 
+import { TextNote, ImageNote, FileNote } from "js/note.js"
+import { Buffer } from "js/buffer.js"
+
 const generator = document.getElementById('add-buffer');
 const container = document.getElementById('container');
 
