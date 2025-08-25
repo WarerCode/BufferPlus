@@ -1,0 +1,19 @@
+:root {
+    --tiny: 4px;
+    --small: 8px;
+    --normal: 12px;
+    --mid: 16px;
+    --big: 24px;
+    --huge: 32px;
+    --mega: 48px;
+    --window: 120px;
+
+    --color-primary: #ffffff;
+    --color-secondary: #cccccc;
+    --color-accent: #ff7400;
+    --color-danger: #ff3c3c;
+    --color-danger-20: rgba(255, 60, 60, 0.2);
+    --color-text-primary: #000000;
+    --color-text-secondary: rgba(0, 0, 0, 0.5);
+    --color-link: #6d4cff;
+}

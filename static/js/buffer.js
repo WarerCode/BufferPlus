@@ -53,6 +53,7 @@ class Buffer {
         this.element = tempDiv.firstElementChild.cloneNode(true);
         
         this.bindEvents();
+        this.bindDragDropEvents();
     }
 
     bindEvents() {
@@ -68,24 +69,12 @@ class Buffer {
     }
 
     bindDragDropEvents() {
-        const dropZone = this.element.querySelector('.notes_container');
+        const dropZone = this.element;
         
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
             dropZone.addEventListener(eventName, (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-            });
-        });
-
-        ['dragenter', 'dragover'].forEach(eventName => {
-            dropZone.addEventListener(eventName, () => {
-                dropZone.classList.add('drag-over');
-            });
-        });
-
-        ['dragleave', 'drop'].forEach(eventName => {
-            dropZone.addEventListener(eventName, () => {
-                dropZone.classList.remove('drag-over');
             });
         });
 
@@ -96,13 +85,11 @@ class Buffer {
 
     handleDrop(event) {
         const dataTransfer = event.dataTransfer;
+        console.log("dropped");
         
         if (dataTransfer.files && dataTransfer.files.length > 0) {
             this.handleFiles(dataTransfer.files);
         } 
-        else if (dataTransfer.items && dataTransfer.items.length > 0) {
-            this.handleDataItems(dataTransfer.items);
-        }
         else if (dataTransfer.getData('text')) {
             this.handleText(dataTransfer.getData('text'));
         }
@@ -206,7 +193,7 @@ class Buffer {
     }
 
     addToContent(element) {
-        const notesContainer = this.element.querySelector('.notes_container');
+        const notesContainer = this.element.parentElement();
         const dropHint = notesContainer.querySelector('.drop-hint');
         
         // Убираем подсказку при первом добавлении контента
@@ -222,17 +209,3 @@ class Buffer {
     }
 
 }
-
-const generator = document.getElementById('add-buffer-button');
-const buffers_group_container = document.getElementById('buffers_group_container');
-const del_all_buffers_burron = document.getElementById('delete-all-button');
-
-console.log("start");
-
-generator.addEventListener('click', () => {
-    const buffer = new Buffer();
-    buffers_group_container.appendChild(buffer.element); 
-});
-del_all_buffers_burron.addEventListener('click', () => {
-    buffers_group_container.innerHTML = "";
-});

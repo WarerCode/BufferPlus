@@ -1,0 +1,45 @@
+@font-face {
+    font-family: "Inter";
+    src: url("../fonts/Inter.ttf");
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a {
+    font-family: "Inter";
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+h4 {
+    font-size: 1.125rem;
+    font-weight: inherit;
+}
+h5 {
+    font-size: 0.875rem;
+    font-weight: inherit;
+}
+p {
+    font-size: 1rem;
+    font-weight: inherit;
+}
+
+a {
+    color: var(--color-link);
+}
