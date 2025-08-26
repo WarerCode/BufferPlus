@@ -1,3 +1,11 @@
+html {
+    min-width: 300px;
+    max-width: 500px;
+
+    max-height: 70vh;
+    overflow: auto;
+}
+
 body {
     background-color: var(--color-primary);
     margin: 0;
@@ -10,6 +18,16 @@ body {
 
 * {
     box-sizing: border-box;
+}
+
+.d_none {
+    display: none!important;
+}
+
+textarea {
+    border: none;
+    outline: none;
+    resize: none;
 }
 
 .popup-container {
@@ -137,45 +155,7 @@ body {
     padding: var(--mid);
     display: none;
     flex-direction: column;
-    gap: 10px;
-}
-
-.buffer-content-empty {
-    justify-content: center;
-}
-
-.content-row {
-    display: flex;
-    align-items: center;
-    gap: var(--small);
-}
-
-.content-text {
-    color: var(--color-text-primary);
-    margin: 0;
-    flex-grow: 1;
-}
-
-.delete-cell-button {
-    background: none;
-    border: 1px solid var(--color-danger-20);
-    border-radius: 0px var(--tiny) var(--tiny) 0px;
-    padding: var(--small) var(--tiny);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-self: stretch;
-    cursor: pointer;
-}
-
-.delete-cell-button-danger {
-    background-color: var(--color-danger-20);
-}
-
-.separator {
-    border: 1px solid var(--color-secondary);
-    border-radius: 1px;
-    width: 100%;
+    gap: var(--mid);
 }
 
 .content-link {
@@ -185,17 +165,17 @@ body {
 }
 
 .image-placeholder {
-    background-color: var(--color-secondary);
     flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     align-self: stretch;
-    min-height: 173px;
+    max-height: 250px;
 }
 
-.image-placeholder-text {
-    color: var(--color-text-primary);
+.image-placeholder > img {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .placeholder-text {

@@ -1,41 +1,67 @@
+const noteDelButtonHTML = `
+    <button class="delete-cell-button">
+        <img class="half" src="static/icons/Close-Half-Red.svg" alt="Delete item">
+        <img class="red" src="static/icons/Close-Red.svg" alt="Delete item">
+    </button>
+`;
 
 class Note {
 
     constructor(){
-        this.element = document.createElement('div');
-        this.element.className = 'note';
+        this.element = null;
+    }
 
-        this.terminator = document.createElement('button');
-        this.terminator
-        this.terminator.textContent = 'X';
-        this.terminator.addEventListener('click', () => {
+    bindEvents() {
+        this.element.querySelector(".delete-cell-button").addEventListener('click', () => {
             this.destroy();
         });
-
-        this.element.appendChild(this.terminator);
     }
 
     destroy() {
+        const el_container = this.element.parentNode;
         this.element.remove();
-        this.terminator.remove();
+
+        const tempBuffer = new Buffer()
+        tempBuffer.checkHintTag(el_container, el_container.querySelectorAll(".content-row").length);
     }
 
 }
 
 export class ImageNote extends Note {
 
-    constructor(imageUrl){
+    constructor(file){
         super();
-        this.imageUrl = imageUrl;
-        this.renderImg();
+        this.file = file;
+        this.init();
     }
 
-    renderImg() {
-        const img = document.createElement('img');
-        img.src = this.imageUrl;
-        img.style.maxWidth = '100%';
+    init() {
+        const innerHTML = `
+            <div class="content-row">
+                <div class="image-placeholder">
+                    <img/>
+                </div>
+                ${noteDelButtonHTML}
+            </div>
+        `;
 
-        this.element.appendChild(img);
+        this.element = createTagByHTML(innerHTML);
+
+        // Создаем превью изображения
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const img = this.element.querySelector("img");
+            img.src = e.target.result;
+            img.className = 'dropped-image';
+            img.alt = this.file.name;
+        };
+        reader.readAsDataURL(this.file);
+        
+        this.bindEvents();
+    }
+
+    bindEvents() {
+        super.bindEvents();
     }
 
 }
@@ -45,15 +71,28 @@ export class TextNote extends Note {
     constructor(text) {
         super();
         this.text = text;
-        this.renderText();
+        this.init();
     }
 
-    renderText() {
-        const textedit = document.createElement('textarea');
-        textedit.textContent = this.text;
-        textedit.style.maxWidth = '100%';
+    init() {
+        const innerHTML = `
+            <div class="content-row">
+                <textarea class="content-text">${this.text}</textarea>
+                ${noteDelButtonHTML}
+            </div>
+        `;
 
-        this.element.appendChild(textedit);
+        this.element = createTagByHTML(innerHTML);
+        
+        this.bindEvents();
+    }
+
+    bindEvents() {
+        super.bindEvents();
+        this.element.querySelector('textarea').addEventListener('input', function () {  
+            this.style.height = 'auto';  
+            this.style.height = `${this.scrollHeight}px`;  
+        });  
     }
 
 }
@@ -63,19 +102,34 @@ export class FileNote extends Note {
     constructor(file) {
         super();
         this.file = file;
-        this.renderFileInfo();
+        this.fileURL = URL.createObjectURL(file);
+        this.textContent = `📄 ${this.file.name}<br>Размер: ${this.formatFileSize(file.size)}`;
+        this.init();
     }
 
-    renderFileInfo() {
-        const info = document.createElement('div');
-        info.style.fontFamily = 'monospace';
-        info.style.whiteSpace = 'pre-wrap';
+    init() {
+        const innerHTML = `
+            <div class="content-row">
+                <a href="${this.fileURL}" class="content-link" target="_blank">${this.textContent}</a>
+                ${noteDelButtonHTML}
+            </div>
+        `;
 
-        const fileSizeKb = (this.file.size / 1024).toFixed(2);
+        this.element = createTagByHTML(innerHTML);
         
-        info.textContent = `📄 ${this.file.name}\nТип: ${this.file.type || 'неизвестен'}\nРазмер: ${fileSizeKb} KB`;
+        this.bindEvents();
+    }
 
-        this.element.appendChild(info);
+    bindEvents() {
+        super.bindEvents();
+    }
+
+    formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
     }
 }
 

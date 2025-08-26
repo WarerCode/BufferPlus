@@ -35,7 +35,7 @@ h5 {
     font-size: 0.875rem;
     font-weight: inherit;
 }
-p {
+p, a, textarea {
     font-size: 1rem;
     font-weight: inherit;
 }
