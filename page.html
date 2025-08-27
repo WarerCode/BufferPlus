@@ -1,0 +1,68 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BufferPlus Component</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+  <link href="static/css/vars.css" rel="stylesheet">
+  <link href="static/css/fonts.css" rel="stylesheet">
+  <link href="static/css/base.css" rel="stylesheet">
+  <link href="static/css/note.css" rel="stylesheet">
+</head>
+
+<body>
+  <main class="popup-container">
+    <header id="section-header" class="popup-header">
+      <div class="logo-container">
+        <!--merged image-->
+        <div class="logo">
+          <img src="static/icons/Logo.svg" alt="Logo">
+        </div>
+        <h1 class="brand-name">Buffer<span class="brand-name-plus">Plus</span></h1>
+      </div>
+      <h3 class="subtitle">Расширь свои возможности</h3>
+    </header>
+    <section id="section-main" class="buffers-list">
+      <button id="add-buffer-button">
+        <img src="static/icons/Plus.svg"
+          alt="Add new buffer">
+      </button>
+
+      <div id="buffers_group_container">
+        <!-- <article class="buffer-item active">
+          <header class="buffer-header">
+            <div class="buffer-title-group">
+              <img src="static/icons/Arrows-Up.svg" alt="Collapse">
+              <h4 class="buffer-title">Буфер 1</h4>
+            </div>
+            <button class="del-button">
+              <img src="static/icons/Trash-White.svg" alt="Delete">
+            </button>
+          </header>
+          <div class="buffer-content buffer-content-empty">
+            <p class="placeholder-text">Вставьте текст или перетащите файл</p>
+          </div>
+        </article> -->
+      </div>
+    </section>
+    <footer id="section-footer" class="popup-footer">
+      <button id="delete-all-button">
+        <img src="static/icons/Warning.svg" alt="Warning icon">
+        <h4 class="delete-all-text">Удалить все буфферы</h4>
+        <img src="static/icons/Warning.svg" alt="Warning icon">
+      </button>
+    </footer>
+  </main>
+
+  <script src="./static/js/note.js"></script>
+  <script src="./static/js/buffer.js"></script>
+  <script src="./static/js/container.js"></script>
+  
+  <script src="page.js"></script>
+
+</body>
+
+</html>
