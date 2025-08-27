@@ -27,7 +27,7 @@ class Note {
 
 }
 
-export class ImageNote extends Note {
+class ImageNote extends Note {
 
     constructor(file){
         super();
@@ -66,7 +66,7 @@ export class ImageNote extends Note {
 
 }
 
-export class TextNote extends Note {
+class TextNote extends Note {
 
     constructor(text) {
         super();
@@ -97,7 +97,7 @@ export class TextNote extends Note {
 
 }
 
-export class FileNote extends Note {
+class FileNote extends Note {
 
     constructor(file) {
         super();
@@ -132,5 +132,3 @@ export class FileNote extends Note {
         return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
     }
 }
-
-export {TextNote, ImageNote, FileNote};
