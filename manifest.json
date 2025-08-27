@@ -5,13 +5,13 @@
   "description": "Simple temporary buffer for copy-paste use",
 
   "icons": {
-    "64": "icons/icon64.png"
+    "39": "static/icons/Logo.png"
   },
 
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "64": "icons/icon64.png"
+      "39": "static/icons/Logo.png"
     }
   },
 
